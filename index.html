@@ -47,6 +47,33 @@
       margin: 4px;
       font-size: 0.95rem;
     }
+
+    /* Video Overlay Styling */
+    #videoOverlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.95);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    #videoOverlay video {
+      max-width: 90%;
+      max-height: 80vh;
+    }
+    #closeBtn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -77,7 +104,7 @@
   </div>
 </nav>
 
-<!-- Hero Section -->
+<!-- Hero -->
 <header class="hero text-center">
   <div class="container">
     <h1 class="display-4"><span id="typing"></span></h1>
@@ -123,17 +150,19 @@
   <div class="container" data-aos="fade-up">
     <h2 class="section-title">Projects</h2>
     <div class="row">
-      <!-- Repeat your cards here (you already added 6, keep same structure) -->
+
+      <!-- HAWKEYE IDS -->
       <div class="col-md-6 mb-4">
         <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">HAWKEYE IDS</h5>
             <p class="card-text">Anomaly and signature-based intrusion detection system using ML and packet analysis.</p>
-            <a href="" class="btn btn-outline-primary">View Project</a>
+            <a href="javascript:void(0);" onclick="showVideo()" class="btn btn-outline-primary">View Project</a>
           </div>
         </div>
       </div>
 
+      <!-- Other Projects (unchanged) -->
       <div class="col-md-6 mb-4">
         <div class="card h-100">
           <div class="card-body">
@@ -148,46 +177,25 @@
         <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">Entertainments Website</h5>
-            <p class="card-text">Developed and maintained a responsive web application showcasing movies and series content. Implemented interactive UI components, ensured mobile compatibility, and used Bootstrap for layout and styling.</p>
+            <p class="card-text">A responsive site for streaming & browsing entertainment content.</p>
             <a href="https://magdyibrahim-bot.github.io/Entertaiment/" class="btn btn-outline-primary" target="_blank">View Project</a>
           </div>
         </div>
       </div>
 
-      <div class="col-md-6 mb-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Travilista</h5>
-            <p class="card-text">Travilista is Website for Tourists that make the experience easier and more exicited for them.</p>
-            <a href="#" class="btn btn-outline-primary">View Project</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 mb-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Train Booking System</h5>
-            <p class="card-text">Developed a GUI-based desktop system to search, reserve, and cancel train tickets with admin controls.</p>
-           
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 mb-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Toffee Store System</h5>
-            <p class="card-text">Created a market simulation system with product and user management features.</p>
-            
-          </div>
-        </div>
-      </div>
-
-      <!-- Add more project cards as needed -->
+      <!-- Add more cards as needed -->
     </div>
   </div>
 </section>
+
+<!-- Video Overlay -->
+<div id="videoOverlay" class="d-flex">
+  <button id="closeBtn" onclick="closeVideo()">&times;</button>
+  <video id="hawkeyeVideo" controls>
+    <source src="Projects/HAWKEYE IDS.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</div>
 
 <!-- Resume -->
 <section id="cv" class="py-5">
@@ -206,7 +214,7 @@
       <div class="social-icons">
         <a href="https://github.com/magdyibrahim-bot" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/magdy-ibrahim-bb743b220/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.linkedin.com/in/magdy-ibrahim-bb743b220/" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://wa.me/" target="_blank"><i class="fab fa-whatsapp"></i></a>
         <a href="mailto:magibra490@gmail.com"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
@@ -219,15 +227,16 @@
 </footer>
 
 <!-- Scripts -->
- <script>
+<script>
   function showVideo() {
     document.getElementById("videoOverlay").style.display = "flex";
     document.getElementById("hawkeyeVideo").play();
   }
 
   function closeVideo() {
-    document.getElementById("hawkeyeVideo").pause();
-    document.getElementById("hawkeyeVideo").currentTime = 0;
+    const video = document.getElementById("hawkeyeVideo");
+    video.pause();
+    video.currentTime = 0;
     document.getElementById("videoOverlay").style.display = "none";
   }
 </script>
